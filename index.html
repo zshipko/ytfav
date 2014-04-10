@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title>ytfav</title>
+</head>
+<body>
+    <!-- This loads the YouTube IFrame Player API code -->
+    <script src="http://www.youtube.com/player_api"></script>  
+    <div id="settings">
+        <div class="settings-group">
+            <label for="opt-users-list-on">favs of users list</label><input type="radio" id="opt-users-list-on" name="users-type" checked/> <br><br>
+            <label for="opt-single-user-on">favs of single user + favs of favs</label><input type="radio" id="opt-single-user-on" name="users-type"/> 
+        </div>
+        <div class="settings-group">
+            <input type="text" id="opt-single-user" placeholder="username" style="display:none;"/>
+
+            <textarea id="opt-users-list" cols="50">zachshipko, guthrie, iiiiiiiillllllll, 000off, 3r4t, 53os, aboutangelica, amber4eva, anon9786, apnerdette, aracelilourdes, BBfux, bcowley, blairshynola, bonfiregraveyardzz, bowiechick, bunrogers, cannedkitty, cantagish, carljosephjohns, ChannelingMaitreya, chasbowie, ClassicsOfGame, clearshquarter, constantdullaart, coolsandtheband, coryarcangel, cowgirlgaby, crystalsculpture, damonzucconi, dancedhamakaparty, dancevideolady, Daxflame, dizoubledizutch2, dkoppich, douggpound, dymaxion, echothebunnyman, eddietainment, eightninethree, eiliseilis, epifanatic, existentialcomputing, EyeballJoe, FenslerFilm, flaminhotslimon, foopledogwang, frisbeesANDflipflops, FuzzyDuck, garystephan, GeminoidDK, gingeranyhow, giopeterful, happeh, Hardkork, hh1edits, hillaas, hitashya, HotPerogi, hotsausagevids, howecute, huwgor, icedeadd, IcySpicyLeoncie, ifeelasphalt, ilovecorgis, Imsoooconfused, indooroak, ineightwalls, islandcrimes, jacketpants, johnheyjohn</textarea>
+        </div>
+        <div class="settings-group">
+            <label for="opt-shuffle">shuffle</label><input type="checkbox" id="opt-shuffle" checked/>
+        </div>
+        <div class="settings-group">
+            <input type="submit" id="opt-init" value="Watch"/>
+        </div>
+    </div>
+    
+    <div id="player"></div>
+    <div id="video-info"></div> 
+    <div id="f"></div>
+    <script src="main.js"></script>
+</body>
+</html>
