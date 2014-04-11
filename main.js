@@ -85,7 +85,7 @@ FavItem.prototype.makeElem = function(item){
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque")
         .data("id", this.id)
         .attr("title", "Fav'd by " + this.favedby.name)
-        .html('<img src="'+this.item['media$group']['media$thumbnail'][0].url+'" width="100%">'+this.title)
+        .html('<img class="lazy" data-src="'+this.item['media$group']['media$thumbnail'][0].url+'" width="100%">'+this.title)
         .append("<br>Fav'd by " + this.favedby.name)
         .click(function(e){
             var $this = $(this);
@@ -97,10 +97,13 @@ FavItem.prototype.makeElem = function(item){
             player.loadVideoById($this.data("id"));
             player.playVideo();
         });
-
+    newLink.find("img").unveil(300);
     return newLink;
         
 }
+
+
+
 
 function getUserLikesFromList(users) {
     var per_user = (30-users.length);
@@ -171,4 +174,17 @@ $("input[name='users-type']").change(function(){
 $(document).ready(function(){
    $("input[name='users-type']:checked").click(); 
 });
+
+
+/**
+ * jQuery Unveil
+ * A very lightweight jQuery plugin to lazy load images
+ * http://luis-almeida.github.com/unveil
+ *
+ * Licensed under the MIT license.
+ * Copyright 2013 Luís Almeida
+ * https://github.com/luis-almeida
+ */
+
+;(function($){$.fn.unveil=function(threshold,callback){var $w=$(window),th=threshold||0,retina=window.devicePixelRatio>1,attrib=retina?"data-src-retina":"data-src",images=this,loaded;this.one("unveil",function(){var source=this.getAttribute(attrib);source=source||this.getAttribute("data-src");if(source){this.setAttribute("src",source);if(typeof callback==="function")callback.call(this);}});function unveil(){var inview=images.filter(function(){var $e=$(this),wt=$w.scrollTop(),wb=wt+$w.height(),et=$e.offset().top,eb=et+$e.height();return eb>=wt-th&&et<=wb+th;});loaded=inview.trigger("unveil");images=images.not(loaded);}$w.scroll(unveil);$w.resize(unveil);unveil();return this;};})(window.jQuery||window.Zepto);
 
