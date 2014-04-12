@@ -106,7 +106,7 @@ FavItem.prototype.makeElem = function(item){
 
 
 function getUserLikesFromList(users) {
-    var per_user = (30-users.length);
+    var per_user = (40-users.length);   // arbirary way of even distribution of vids
     if(per_user<=0)
         per_user = 1;
 
@@ -118,7 +118,7 @@ function getUserLikesFromList(users) {
 
 function initLikes() {
     $("#player").css("visibility", "visible");
-    if($('#opt-users-list-on').is(':checked')) {    // favs of users list
+    if($('#opt-users-list-on').is(':checked')) {        // favs of users list
         var users = $('#opt-users-list').val();         // split text into array
         users = users.split(', ');
         getUserLikesFromList(users);    
