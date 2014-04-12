@@ -1,11 +1,17 @@
-body{font-family:sans-serif; margin: 0; padding: 0;}
-#player{ width:77%;position:fixed;height:80%;visibility:hidden;}
+body{
+  font-family:sans-serif;
+  margin: 0;
+  padding: 0;
+  
+}
+#player{ width:calc(100%-200px);position:fixed;height:calc(100%-85px);visibility:hidden;}
 
-#f {width:20%;float:right;}
+#f {width:200px;float:right;}
 #f a{display:block; margin-bottom:25px; color:#666;}
 #f a.current{padding:2px; border:2px solid purple;}
 
-#settings {position:fixed; width:77%; left:0; bottom:0; border-top:1px solid #666; border-right:1px solid #666; height:75px;}
+#settings {
+    position:fixed; width:77%; left:0; bottom:0; border-top:1px solid #666; border-right:1px solid #666; height:75px;}
 #settings textarea{ height:65px;}
 .settings-group{display:inline-block; margin-right:5px;padding:3px; vertical-align:middle;}
 #settings label{padding:5px;}
