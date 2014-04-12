@@ -8,7 +8,7 @@ body{
   padding: 0;
   
 }
-#player{ width:calc(100%-200px);position:fixed;height:calc(100%-85px);visibility:hidden;}
+#player{ width:calc(100% - 200px);position:fixed;height:calc(100% - 85px);visibility:hidden;}
 
 #f {width:200px;float:right;}
 #f a{display:block; margin-bottom:25px; color:#666;}
