@@ -1,4 +1,4 @@
-body{font-family:sans-serif;}
+body{font-family:sans-serif; margin: 0; padding: 0;}
 #player{ width:77%;position:fixed;height:80%;visibility:hidden;}
 
 #f {width:20%;float:right;}
