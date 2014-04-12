@@ -64,6 +64,8 @@ YtUser.prototype.loadFaves = function(num,recursive){
             if(recursive){
                 var nextAuthor = new YtUser(item["author"][0]["yt$userId"]["$t"]);
                 nextAuthor.loadFaves(25, false);
+                if($('#opt-shuffle').is(':checked'))  // shuffle videos in list
+                    $("#f a").shuffle();
             }
         }); // end each loop
     }); // end json parsing
@@ -114,6 +116,8 @@ function getUserLikesFromList(users) {
         var ytuser = new YtUser(user);
         ytuser.loadFaves(per_user, false);
     });  // end forEach users loop
+    if($('#opt-shuffle').is(':checked'))  // shuffle videos in list
+      $("#f a").shuffle();
 }
 
 function initLikes() {
@@ -126,10 +130,6 @@ function initLikes() {
         var user = new YtUser($('#opt-single-user').val());
         user.loadFaves(25, true);
     }
-    
-    if($('#opt-shuffle').is(':checked'))  // shuffle videos in list
-      $("#f a").shuffle();
-
  }
 
 
