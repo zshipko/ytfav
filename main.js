@@ -70,9 +70,10 @@ function initPlaylist() {
     // Get .json playlist for this hour
     // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
 
-    $.getJSON(
-        "http://theageofmammals.com/secret/youtube/jukebox.php",
-        function(data){
+    $.ajax(
+        url: "http://theageofmammals.com/secret/youtube/jukebox.php?callback=?",
+        datatype: 'jsonp',
+        success: function(data){
             $.each(data,function(i,item) {
                 var favItem = new FavItem(item);    
                 $('#f').append(favItem.element);
