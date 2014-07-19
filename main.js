@@ -70,9 +70,9 @@ function initPlaylist() {
     // Get .json playlist for this hour
     // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
 
-    $.getJSON({
-        url: "http://theageofmammals.com/secret/youtube/jukebox.php",
-        success: function(data){
+    $.getJSON(
+        "http://theageofmammals.com/secret/youtube/jukebox.php",
+        function(data){
             $.each(data,function(i,item) {
                 var favItem = new FavItem(item);    
                 $('#f').append(favItem.element);
@@ -81,7 +81,7 @@ function initPlaylist() {
                 }
             }); // end each loop
         }
-    });
+    );
 
 }
 
