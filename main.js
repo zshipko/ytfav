@@ -74,13 +74,15 @@ function initPlaylist() {
         url: "http://theageofmammals.com/secret/youtube/jukebox.php?callback=?",
         datatype: 'jsonp',
         success: function(data){
-            $.each(data,function(i,item) {
-                var favItem = new FavItem(item);    
+            console.log(data);
+            var count = data.length;
+            for(var i=0; i<count; i++) {
+                var favItem = new FavItem(data[i]);    
                 $('#f').append(favItem.element);
                 if ($(".current").length == 0){
                     $("#f a:first-of-type").click();
-                }
-            }); // end each loop
+                }                
+            }
         }
     });
 
