@@ -9,16 +9,8 @@ function onYouTubeIframeAPIReady() {
             'onStateChange': onPlayerStateChange
         }
     });
-    $('#opt-single-user').on('keydown', function(e){
-        if (e.which != 13) return;
-        e.preventDefault();
-        $("#f").html("");
-        $(this).blur();
 
-        initLikes();
-    });
-
-    $('#opt-init').click(initLikes);
+    initPlaylist();    
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -38,47 +30,15 @@ function stopVideo() {
     player.stopVideo();
 }
 
-var YtUser = function(u){
-    this.name = u;
-};
-
-YtUser.prototype.url = function(num, kind){
-    kind = kind || "favorites";
-    num = num || 25;
-
-    return 'http://gdata.youtube.com/feeds/api/users/'+this.name+'/'+kind+'?alt=json&max-results='+num;
-};
-
-YtUser.prototype.loadFaves = function(num,recursive){
-    var user = this;
-    $.getJSON(user.url(), function(data) {   
-        $.each(data.feed.entry, function(i, item) {
-            if (!item['media$group']['media$player']) return; 
-      
-            var favItem = new FavItem(item, user);
-       
-            $('#f').append(favItem.element);
-            if ($(".current").length == 0){
-                $("#f a:first-of-type").click();
-            }
-            if(recursive){
-                var nextAuthor = new YtUser(item["author"][0]["yt$userId"]["$t"]);
-                nextAuthor.loadFaves(25, false);
-                if($('#opt-shuffle').is(':checked'))  // shuffle videos in list
-                    $("#f a").shuffle();
-            }
-        }); // end each loop
-    }); // end json parsing
-};
-
-var FavItem = function(item, user){
-    this.item = item;
-    this.title = item['title']['$t'];
-    this.link = item['media$group']['media$player'][0]['url'].replace("watch?v=", "embed/").split("&")[0];
-    var s = this.link.split("/");
-    this.id = s[s.length-1];
-    this.author = this.favedby = item["author"][0]["yt$userId"]["$t"];
-    this.favedby = user;
+var FavItem = function(item){
+    this.title = item['title'];
+    this.id = item['id'];
+    this.link = 'http://www.youtube.com/watch?v=' + this.id;
+    if(item['type'] == 'favorites')
+        this.byline = 'Favorited by ' + item['favorited_by']['name'];
+    else
+        this.byline = 'Uploaded by ' + item['uploaded_by']['name']; 
+    this.thumb = item['thumb'];       
     this.element = this.makeElem();
 };
 
@@ -86,9 +46,9 @@ FavItem.prototype.makeElem = function(item){
     var newLink = $("<a>")
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque")
         .data("id", this.id)
-        .attr("title", "Fav'd by " + this.favedby.name)
-        .html('<img class="lazy" data-src="'+this.item['media$group']['media$thumbnail'][0].url+'" width="100%">'+this.title)
-        .append("<br>Fav'd by " + this.favedby.name)
+        .attr("title", this.byline)
+        .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
+        .append("<br>" + this.byline)
         .click(function(e){
             var $this = $(this);
             $("#f a").removeClass("current");
@@ -104,34 +64,26 @@ FavItem.prototype.makeElem = function(item){
         
 }
 
-
-
-
-function getUserLikesFromList(users) {
-    var per_user = (40-users.length);   // arbirary way of even distribution of vids
-    if(per_user<=0)
-        per_user = 1;
-
-    users.forEach(function(user, users_i, users){
-        var ytuser = new YtUser(user);
-        ytuser.loadFaves(per_user, false);
-    });  // end forEach users loop
-    if($('#opt-shuffle').is(':checked'))  // shuffle videos in list
-      $("#f a").shuffle();
-}
-
-function initLikes() {
+function initPlaylist() {
     $("#player").css("visibility", "visible");
-    if($('#opt-users-list-on').is(':checked')) {        // favs of users list
-        var users = $('#opt-users-list').val();         // split text into array
-        users = users.split(', ');
-        getUserLikesFromList(users);    
-    } else {        
-        var user = new YtUser($('#opt-single-user').val());
-        user.loadFaves(25, true);
-    }
- }
 
+    // Get .json playlist for this hour
+    // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
+
+    $.getJSON({
+        "http://theageofmammals.com/secret/youtube/jukebox.php",
+        function(data){
+            $.each(data,function(i,item) {
+                var favItem = new FavItem(item);    
+                $('#f').append(favItem.element);
+                if ($(".current").length == 0){
+                    $("#f a:first-of-type").click();
+                }
+            }); // end each loop
+        }
+    });
+
+}
 
 $("body").keydown(function(e){
     if (e.which == 40){
@@ -141,38 +93,6 @@ $("body").keydown(function(e){
         e.preventDefault();
         $("#f a.current").prev.click();
     }
-});
-
-
-$.fn.shuffle = function() {
-
-    var allElems = this.get(),
-        getRandom = function(max) {
-            return Math.floor(Math.random() * max);
-        },
-        shuffled = $.map(allElems, function(){
-            var random = getRandom(allElems.length),
-                randEl = $(allElems[random]).clone(true)[0];
-            allElems.splice(random, 1);
-            return randEl;
-       });
-
-    this.each(function(i){
-        $(this).replaceWith($(shuffled[i]));
-    });
-
-    return $(shuffled);
-
-};
-
-$("input[name='users-type']").change(function(){
-    var t = $(this).attr("id").slice(0, $(this).attr("id").length-3);
-    $("#opt-single-user, #opt-users-list").hide();
-    $("#"+t).show();
-});
-
-$(document).ready(function(){
-   $("input[name='users-type']:checked").click(); 
 });
 
 
