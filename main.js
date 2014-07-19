@@ -56,6 +56,7 @@ FavItem.prototype.makeElem = function(item){
             $('html, body').animate({
                 scrollTop: $this.offset().top
             }, 500);
+            console.log(player);
             player.loadVideoById($this.data("id"));
             player.playVideo();
         });
@@ -70,10 +71,11 @@ function initPlaylist() {
     // Get .json playlist for this hour
     // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
 
-    $.getJSON(
-        "http://theageofmammals.com/secret/youtube/jukebox.php?callback=?",
-        function(data){
-            console.log(data);
+    $.ajax({
+        url: "http://theageofmammals.com/secret/youtube/jukebox.php?callback=?",
+        datatype: 'jsonp',
+        success: function(data){
+            data = JSON.parse(data);
             var count = data.length;
             for(var i=0; i<count; i++) {
                 var favItem = new FavItem(data[i]);    
@@ -83,7 +85,7 @@ function initPlaylist() {
                 }                
             }
         }
-    );
+    });
 
 }
 
