@@ -18,3 +18,5 @@ body{
   transform: translate(-25px) rotate(-5deg);
   border-bottom: 1px solid #AAA;
 }
+
+.bigger { width: 100%;!important; }
