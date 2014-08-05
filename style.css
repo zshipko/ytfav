@@ -12,7 +12,8 @@ body{
 #player{ width:calc(100% - 200px);position:fixed;height:calc(100%);visibility:hidden;}
 
 #f {width:200px;float:right;}
-#f a{display:block; padding-bottom:10px; background:#aaa;}
+#f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px;}
 #f a.current{
-  background: #fff;
+  transform: translate(-25px) rotate(-5deg);
+  border-bottom: 1px solid #AAA;
 }
