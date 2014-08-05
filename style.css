@@ -20,5 +20,5 @@ body{
   border-bottom: 1px solid #AAA;
 }
 
-#player.bigger { width: 99%!important; }
-#player.bigger:after{ width:1%; height:100%; background:#000; line-height:100%; content: '<';}
+#player.bigger { width:calc(100% - 50px);}
+
