@@ -111,16 +111,18 @@ $(document).keydown(function(e){
         } else {
             $("#f").css("visibility", "hidden");
         }
+        $("#f").click(function(ev){
+           if ($("#f").css("visibility") == "hidden"){
+               ev.preventDefault();
+               $("#f").css("visibility", "visible");
+               $("#player").removeClass("bigger");
+           }
+            
+        });
+
     }
 });
 
-$("#f").on("click", function(e){
-   if ($("#f").css("visibility") == "hidden"){
-       $("#f").css("visibility", "visible");
-       $("#player").removeClass("bigger");
-   }
-    
-});
 
 
 /**
