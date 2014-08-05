@@ -6,7 +6,7 @@ function onYouTubeIframeAPIReady() {
         videoId: 'z7eSpk1YYS0',
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
             'onError': onError
         }
     });
