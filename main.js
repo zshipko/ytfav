@@ -97,12 +97,12 @@ function initPlaylist() {
 }
 
 $("html").keydown(function(e){
-    if (e.which == 78){
+    if (e.which == 39){
         $("#f a.current").next().click();
         e.preventDefault();
-    } else if(e.which == 66){
-        e.preventDefault();
+    } else if(e.which == 37){
         $("#f a.current").prev.click();
+        e.preventDefault();
     } else if (e.which == 16) {
         e.preventDefault();
 
