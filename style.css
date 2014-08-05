@@ -22,4 +22,4 @@ body{
 
 #player.bigger { width:calc(100% - 75px);}
 #f.hidden { width:75px; }
-#f.hidden * {font-size:0px};
+#f.hidden * {font-size:0px!important;}
