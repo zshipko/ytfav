@@ -12,7 +12,7 @@ body{
 #player{ width:calc(100% - 200px);position:fixed;height:calc(100%);visibility:hidden;}
 
 #f {width:200px;float:right;}
-#f img {max-height:250px;}
+#f img {max-height:150px;}
 #f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px;}
 #f a.current{
   transform: translate(-25px) rotate(-5deg);
