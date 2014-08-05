@@ -50,7 +50,7 @@ var FavItem = function(item){
 
 FavItem.prototype.makeElem = function(item){
     var newLink = $("<a>")
-        .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
+        .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3&disablekb=1")
         .data("id", this.id)
         .attr("title", this.byline)
         .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
