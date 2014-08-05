@@ -95,6 +95,12 @@ $("body").keydown(function(e){
     } else if(e.which == 38){
         e.preventDefault();
         $("#f a.current").prev.click();
+    } else if (e.which == 39) {
+        e.preventDefault();
+        $("#f").hide();
+    } else if (e.which == 37) {
+        e.preventDefault();
+        $("#f").show();
     }
 });
 
