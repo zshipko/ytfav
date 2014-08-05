@@ -98,11 +98,11 @@ $("body").keydown(function(e){
     } else if (e.which == 39) {
         e.preventDefault();
         $("#player").addClass("bigger");
-        //$("#f").();
+        $("#f").width("0px");
     } else if (e.which == 37) {
         e.preventDefault();
         $("#player").removeClass("bigger");
-        //$("#f").show();
+        $("#f").width("200px");
     }
 });
 
