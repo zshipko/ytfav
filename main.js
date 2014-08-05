@@ -101,7 +101,7 @@ $("html").keydown(function(e){
         $("#f a.current").next().click();
         e.preventDefault();
     } else if(e.which == 37){
-        $("#f a.current").prev.click();
+        $("#f a.current").prev().click();
         e.preventDefault();
     } else if (e.which == 16) {
         e.preventDefault();
