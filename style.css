@@ -23,4 +23,4 @@ body{
 #player.bigger { width:calc(100% - 75px);}
 #f.hidden { width:75px; }
 #f.hidden a.current {background: #000; transform: translate(0px) rotate(0deg);}
-#f.hidden a {font-size:0px!important;}
+#f.hidden * {font-size:0px!important;}
