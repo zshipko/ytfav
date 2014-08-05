@@ -106,23 +106,10 @@ $("html").keydown(function(e){
     } else if (e.which == 16) {
         e.preventDefault();
         $("#player").toggleClass("bigger");
-        if ($("#f").css("width") === "50px"){
-            $("#f").css("width", "200px");
-        } else {
-            $("#f").css("width", "50px");
-        }
-        
-
+        $("#f").toggleClass("hidden");
     }
 });
 
-$("#f").click(function(ev){
-   if ($("#f").css("width") === "50px"){
-       $("#f").css("width", "200px");
-       $("#player").removeClass("bigger");
-   }
-    
-});
 
 /**
  * jQuery Unveil
