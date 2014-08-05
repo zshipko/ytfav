@@ -96,20 +96,20 @@ function initPlaylist() {
 }
 
 $("body").keydown(function(e){
-    if (e.which == 40){
+    if (e.which == 78){
         $("#f a.current").next().click();
         e.preventDefault();
-    } else if(e.which == 38){
+    } else if(e.which == 66){
         e.preventDefault();
         $("#f a.current").prev.click();
-    } else if (e.which == 39) {
+    } else if (e.which == 16) {
         e.preventDefault();
-        $("#player").addClass("bigger");
-        $("#f").css("visibility", "hidden");
-    } else if (e.which == 37) {
-        e.preventDefault();
-        $("#player").removeClass("bigger");
-        $("#f").css("visibility", "visible");
+        $("#player").toggleClass("bigger");
+        if ($("#player").css("visibility") == "hidden"){
+            $("#f").css("visibility", "visible");
+        } else {
+            $("#f").css("visibility", "hidden");
+        }
     }
 });
 
