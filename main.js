@@ -105,7 +105,7 @@ $("body").keydown(function(e){
     } else if (e.which == 16) {
         e.preventDefault();
         $("#player").toggleClass("bigger");
-        if ($("#player").css("visibility") == "hidden"){
+        if ($("#f").css("visibility") == "hidden"){
             $("#f").css("visibility", "visible");
         } else {
             $("#f").css("visibility", "hidden");
