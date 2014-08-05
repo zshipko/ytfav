@@ -14,7 +14,7 @@ body{
 
 #f {width:200px;float:right;background: #000;}
 #f img {max-height:150px;}
-#f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px;}
+#f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px; font-size:15px; }
 #f a.current{
   transform: translate(-15px) rotate(-5deg);
   border-bottom: 1px solid #AAA;
