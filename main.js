@@ -73,7 +73,7 @@ FavItem.prototype.makeElem = function(item){
 function initPlaylist() {
     $("#player").css("visibility", "visible");
     $("#player").on("focus", function(){ 
-        $("body").focus(); 
+        $(document).focus(); 
     });
     // Get .json playlist for this hour
     // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
@@ -96,7 +96,7 @@ function initPlaylist() {
 
 }
 
-$("body").keydown(function(e){
+$(document).keydown(function(e){
     if (e.which == 78){
         $("#f a.current").next().click();
         e.preventDefault();
