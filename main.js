@@ -123,12 +123,6 @@ $("html").keydown(function(e){
     }
 });
 
-$("html *").on("mousemove", function(e){
-   $("body").focus(); 
-});
-
-
-
 /**
  * jQuery Unveil
  * A very lightweight jQuery plugin to lazy load images
