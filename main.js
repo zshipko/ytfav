@@ -96,7 +96,7 @@ function initPlaylist() {
 
 }
 
-$(document).keydown(function(e){
+$("html").keydown(function(e){
     if (e.which == 78){
         $("#f a.current").next().click();
         e.preventDefault();
@@ -111,7 +111,7 @@ $(document).keydown(function(e){
         } else {
             $("#f").css("visibility", "hidden");
         }
-        $("#f").click(function(ev){
+        $("html").click(function(ev){
            if ($("#f").css("visibility") == "hidden"){
                ev.preventDefault();
                $("#f").css("visibility", "visible");
