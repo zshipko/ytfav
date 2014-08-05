@@ -123,9 +123,8 @@ $("html").keydown(function(e){
     }
 });
 
-$("html").on("mousemove", function(e){
-    
-   $("html").focus(); 
+$("html *").on("mousemove", function(e){
+   $("body").focus(); 
 });
 
 
