@@ -114,6 +114,14 @@ $(document).keydown(function(e){
     }
 });
 
+$("#f").on("click", function(e){
+   if ($("#f").css("visibility") == "hidden"){
+       $("#f").css("visibility", "visible");
+       $("#player").removeClass("bigger");
+   }
+    
+});
+
 
 /**
  * jQuery Unveil
