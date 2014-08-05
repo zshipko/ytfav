@@ -7,6 +7,7 @@ function onYouTubeIframeAPIReady() {
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
+            'onError': onError
         }
     });
 }
@@ -25,6 +26,12 @@ function onPlayerStateChange(event) {
         $("#f a.current").next().click(); 
     }
 }
+
+// Just go to the next video if something goes wrong
+function onError(event) {
+    $("#f a.current").next().click(); 
+}
+
 function stopVideo() {
     player.stopVideo();
 }
