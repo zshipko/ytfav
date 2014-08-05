@@ -105,11 +105,12 @@ $("html").keydown(function(e){
         $("#f a.current").prev.click();
     } else if (e.which == 16) {
         e.preventDefault();
+
+        $("#player").toggleClass("bigger");
+        $("#f").toggleClass("hidden");
         $('html, body').animate({
             scrollTop: $(".current").offset().top
         }, 500);
-        $("#player").toggleClass("bigger");
-        $("#f").toggleClass("hidden");
     }
 });
 
