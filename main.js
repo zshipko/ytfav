@@ -4,8 +4,6 @@ var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         videoId: 'z7eSpk1YYS0',
-        modestbranding: 1,
-        autohide: 1,
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -45,7 +43,7 @@ var FavItem = function(item){
 
 FavItem.prototype.makeElem = function(item){
     var newLink = $("<a>")
-        .data("url", this.link  + "?enablejsapi=1&wmode=opaque")
+        .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1")
         .data("id", this.id)
         .attr("title", this.byline)
         .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
