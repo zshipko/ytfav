@@ -22,5 +22,5 @@ body{
 
 #player.bigger { width:calc(100% - 75px);}
 #f.hidden { width:75px; }
-#f.hidden a.current {background: #000; transform: translate(0px) rotate(0deg);}
+#f.hidden a.current {background: #000; border-left:1px solid #000; transform: translate(0px) rotate(0deg);}
 #f.hidden * {font-size:0px!important;}
