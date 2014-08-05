@@ -50,7 +50,7 @@ var FavItem = function(item){
 
 FavItem.prototype.makeElem = function(item){
     var newLink = $("<a>")
-        .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3&disablekb=1")
+        .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
         .attr("title", this.byline)
         .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
@@ -62,7 +62,6 @@ FavItem.prototype.makeElem = function(item){
             $('html, body').animate({
                 scrollTop: $this.offset().top
             }, 500);
-            console.log(player);
             player.loadVideoById($this.data("id"));
             player.playVideo();
         });
@@ -73,7 +72,9 @@ FavItem.prototype.makeElem = function(item){
 
 function initPlaylist() {
     $("#player").css("visibility", "visible");
-
+    $("#player").on("focus", function(){ 
+        $("body").focus(); 
+    });
     // Get .json playlist for this hour
     // # how to append the next hour's playlist during playback (timer goes off on the hour?) so we can play hour to hour seamlessly...
 
