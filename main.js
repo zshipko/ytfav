@@ -34,9 +34,9 @@ var FavItem = function(item){
     this.id = item['id'];
     this.link = 'http://www.youtube.com/watch?v=' + this.id;
     if(item['type'] == 'favorites')
-        this.byline = 'Favorited by ' + item['favorited_by']['name'];
+        this.byline = '<span style="font-size:12px">Favorited by:</span> ' + item['favorited_by']['name'];
     else
-        this.byline = 'Uploaded by ' + item['uploaded_by']['name']; 
+        this.byline = '<span style="font-size:12px">Uploaded by</span> ' + item['uploaded_by']['name']; 
     this.thumb = item['thumb'];       
     this.element = this.makeElem();
 };
