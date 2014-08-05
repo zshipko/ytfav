@@ -19,4 +19,4 @@ body{
   border-bottom: 1px solid #AAA;
 }
 
-.bigger { width: 100%;!important; }
+#player.bigger { width: 100%!important; }
