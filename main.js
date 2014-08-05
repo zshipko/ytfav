@@ -106,21 +106,22 @@ $("html").keydown(function(e){
     } else if (e.which == 16) {
         e.preventDefault();
         $("#player").toggleClass("bigger");
-        if ($("#f").css("visibility") == "hidden"){
-            $("#f").css("visibility", "visible");
+        if ($("#f").css("width") === "50px"){
+            $("#f").css("width", "200px");
         } else {
-            $("#f").css("visibility", "hidden");
+            $("#f").css("width", "50px");
         }
-        $("html").click(function(ev){
-           if ($("#f").css("visibility") == "hidden"){
-               ev.preventDefault();
-               $("#f").css("visibility", "visible");
-               $("#player").removeClass("bigger");
-           }
-            
-        });
+        
 
     }
+});
+
+$("#f").click(function(ev){
+   if ($("#f").css("width") === "50px"){
+       $("#f").css("width", "200px");
+       $("#player").removeClass("bigger");
+   }
+    
 });
 
 /**
