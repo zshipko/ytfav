@@ -7,6 +7,7 @@ body{
   font-family:sans-serif;
   margin: 0;
   padding: 0;
+  overflow:hidden;
   
 }
 #player{ width:calc(100% - 200px);position:fixed;height:calc(100%);visibility:hidden;}
@@ -15,7 +16,7 @@ body{
 #f img {max-height:150px;}
 #f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px;}
 #f a.current{
-  transform: translate(-5px) rotate(-5deg);
+  transform: translate(-15px) rotate(-5deg);
   border-bottom: 1px solid #AAA;
 }
 
