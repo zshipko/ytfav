@@ -15,7 +15,7 @@ body{
 #f {width:200px;float:right;background: #000;}
 #f img {max-height:150px;}
 #f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px; font-size:15px;  }
-#f a:hover {
+#f a:not(.current):hover {
   cursor: pointer;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.6);
   -moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.6);
