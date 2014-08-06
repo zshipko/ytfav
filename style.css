@@ -17,8 +17,9 @@ body{
 #f a{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px; font-size:15px;  }
 #f a:hover {
   cursor: pointer;
-  border-color: #666;
-  background: #eee;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.3);
+  box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.3);
 }
 #f a.current{
   transform: translate(-15px) rotate(-5deg);
