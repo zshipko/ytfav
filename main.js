@@ -52,7 +52,7 @@ FavItem.prototype.makeElem = function(item){
     var newLink = $("<a>")
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
-        .attr("title", this.byline)
+        .attr("title", unescape(this.title))
         .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
         .append("<br>" + this.byline)
         .click(function(e){
