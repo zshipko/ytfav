@@ -40,9 +40,9 @@ var FavItem = function(item){
     this.title = item['title'];
     this.id = item['id'];
     this.link = 'http://www.youtube.com/watch?v=' + this.id;
-        this.byline = '<span style="font-size:12px">Uploaded by</span> <a target="_blank" href="http://youtube.com/user/' + item['uploaded_by']['name'] + '">' + item['uploaded_by']['name'] + '</a>'; 
+        this.byline = '<span style="font-size:12px">Uploaded by</span> <a target="_blank" href="http://youtube.com/channel/' + item['uploaded_by']['id'] + '">' + item['uploaded_by']['name'] + '</a>'; 
     if(item['type'] == 'favorites')
-        this.byline += '<span style="font-size:12px"><br/>Favorited by:</span> <a target="_blank" href="http://youtube.com/user/' + item['favorited_by']['name'] + '">' + item['favorited_by']['name'] + '</a>';
+        this.byline += '<span style="font-size:12px"><br/>Favorited by:</span> <a target="_blank" href="http://youtube.com/channel/' + item['favorited_by']['id'] + '">' + item['favorited_by']['name'] + '</a>';
     this.thumb = item['thumb'];       
     this.element = this.makeElem();
 };
