@@ -40,9 +40,9 @@ var FavItem = function(item){
     this.title = item['title'];
     this.id = item['id'];
     this.link = 'http://www.youtube.com/watch?v=' + this.id;
-        this.byline = '<span style="font-size:12px">Uploaded by</span> <a target="_blank" href="http://youtube.com/channel/' + item['uploaded_by']['id'] + '">' + item['uploaded_by']['name'] + '</a>'; 
+        this.byline = '<span style="font-size:12px">Uploaded by</span> <a target="_blank" href="' + item['uploaded_by']['url'] + '">' + item['uploaded_by']['name'] + '</a>'; 
     if(item['type'] == 'favorites')
-        this.byline += '<span style="font-size:12px"><br/>Favorited by:</span> <a target="_blank" href="http://youtube.com/channel/' + item['favorited_by']['id'] + '">' + item['favorited_by']['name'] + '</a>';
+        this.byline += '<span style="font-size:12px"><br/>Favorited by:</span> <a target="_blank" href="' + item['favorited_by']['url'] + '">' + item['favorited_by']['name'] + '</a>';
     this.thumb = item['thumb'];       
     this.element = this.makeElem();
 };
@@ -53,7 +53,7 @@ FavItem.prototype.makeElem = function(item){
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
         .attr("title", unescape(this.title))
-        .html('<img class="lazy" data-src="'+this.thumb+'" width="100%">'+this.title)
+        .html('<img class="lazy" data-src="'+this.thumb+'" width="100%"><a target="_blank" href="'+this.link+'">'+this.title+'</a>')
         .append("<br>" + this.byline)
         .click(function(e){
             var $this = $(this);
