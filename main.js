@@ -52,7 +52,6 @@ FavItem.prototype.makeElem = function(item){
         .attr("class", "item")
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
-        .attr("title", unescape(this.title))
         .html('<img class="lazy" data-src="'+this.thumb+'" width="100%"><a target="_blank" href="'+this.link+'">'+this.title+'</a>')
         .append("<br>" + this.byline)
         .click(function(e){
@@ -99,10 +98,6 @@ function initPlaylist() {
 
 }
 
-$('#f .item').each(function(){  // for getting rid of title hovers on .bigger layout
-    $(this).data('title_orig',$(this).attr('title'));
-});
-
 $("html").keydown(function(e){
     if (e.which == 40){
         $("#f .item.current").next().click();
@@ -115,13 +110,6 @@ $("html").keydown(function(e){
 
         $("#player").toggleClass("bigger");
 
-        $('#f .item').each(function(){  // get rid of title hovers on .bigger layout
-            if($('#player.bigger').length>0) {
-                $(this).attr('title','');
-            } else {
-                $(this).attr('title',$(this).data('title_orig'));                
-            }
-        });
         $("#f").toggleClass("hidden");
         $('html, body').animate({
             scrollTop: $(".current").offset().top
