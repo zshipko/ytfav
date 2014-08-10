@@ -57,6 +57,7 @@ FavItem.prototype.makeElem = function(item){
         .append("<br>" + this.byline)
         .click(function(e){
             var $this = $(this);
+            console.log($this.prop("tagName"));
             if($this.prop("tagName") == 'A') // if user clicked a link within the .item
                 return;
             $("#f .item").removeClass("current");
