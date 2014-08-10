@@ -14,15 +14,15 @@ body{
 
 #f {width:200px;float:right;background: #000;}
 #f img {max-height:150px;}
-#f a.item{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px; font-size:15px;  }
-#f a a {
+#f .item{display:block; padding:10px; background:#fff; border:1px solid #AAA; border-bottom:0px; font-size:15px;  }
+#f .item a {
   color: #000000;
   text-decoration: none;
 }
-#f a a:hover {
+#f .item a:hover {
   text-decoration: underline;
 }
-#f a.item:not(.current):hover {
+#f .item:not(.current):hover {
   cursor: pointer;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.6);
   -moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.6);
@@ -30,7 +30,7 @@ body{
   z-index: 500;
   position: relative;
 }
-#f a.item.current{
+#f .item.current{
   transform: translate(-15px) rotate(-5deg);
   border-bottom: 1px solid #AAA;
 }
