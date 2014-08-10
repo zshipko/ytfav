@@ -99,6 +99,10 @@ function initPlaylist() {
 
 }
 
+$('#f .item').each(function(){  // for getting rid of title hovers on .bigger layout
+    $(this).data('title',$(this).attr('title'));
+});
+
 $("html").keydown(function(e){
     if (e.which == 40){
         $("#f .item.current").next().click();
@@ -110,6 +114,14 @@ $("html").keydown(function(e){
         e.preventDefault();
 
         $("#player").toggleClass("bigger");
+
+        $('#f .item').each(function(){  // get rid of title hovers on .bigger layout
+            if($('#player.bigger').length>0) {
+                $(this).attr('title','');
+            } else {
+                $(this).attr('title',$(this).data('title'));                
+            }
+        });
         $("#f").toggleClass("hidden");
         $('html, body').animate({
             scrollTop: $(".current").offset().top
