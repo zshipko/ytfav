@@ -48,7 +48,7 @@ var FavItem = function(item){
 };
 
 FavItem.prototype.makeElem = function(item){
-    var newLink = $("<a>")
+    var newLink = $("<a class='item'>")
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
         .attr("title", unescape(this.title))
