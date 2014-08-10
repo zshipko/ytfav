@@ -100,7 +100,7 @@ function initPlaylist() {
 }
 
 $('#f .item').each(function(){  // for getting rid of title hovers on .bigger layout
-    $(this).data('title',$(this).attr('title'));
+    $(this).data('title_orig',$(this).attr('title'));
 });
 
 $("html").keydown(function(e){
@@ -119,7 +119,7 @@ $("html").keydown(function(e){
             if($('#player.bigger').length>0) {
                 $(this).attr('title','');
             } else {
-                $(this).attr('title',$(this).data('title'));                
+                $(this).attr('title',$(this).data('title_orig'));                
             }
         });
         $("#f").toggleClass("hidden");
