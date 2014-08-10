@@ -23,13 +23,13 @@ function onPlayerReady(event) {
 //    the player should play for six seconds and then stop.
 function onPlayerStateChange(event) {
     if (event.data == 0) {
-        $("#f a.current").next().click(); 
+        $("#f .item.current").next().click(); 
     }
 }
 
 // Just go to the next video if something goes wrong
 function onError(event) {
-    $("#f a.current").next().click(); 
+    $("#f .item.current").next().click(); 
 }
 
 function stopVideo() {
@@ -48,7 +48,8 @@ var FavItem = function(item){
 };
 
 FavItem.prototype.makeElem = function(item){
-    var newLink = $("<a class='item'>")
+    var newLink = $("<div>")
+        .attr("class", "item")
         .data("url", this.link  + "?enablejsapi=1&wmode=opaque&modestbranding=1&autohide=1&iv_load_policy=3")
         .data("id", this.id)
         .attr("title", unescape(this.title))
@@ -56,7 +57,7 @@ FavItem.prototype.makeElem = function(item){
         .append("<br>" + this.byline)
         .click(function(e){
             var $this = $(this);
-            $("#f a").removeClass("current");
+            $("#f .item").removeClass("current");
             $this.addClass("current");
             $('html, body').animate({
                 scrollTop: $this.offset().top
@@ -87,7 +88,7 @@ function initPlaylist() {
                 var favItem = new FavItem(data[i]);    
                 $('#f').append(favItem.element);
                 if ($(".current").length == 0){
-                    $("#f a:first-of-type").click();
+                    $("#f .item:first-of-type").click();
                 }                
             }
         }
@@ -97,10 +98,10 @@ function initPlaylist() {
 
 $("html").keydown(function(e){
     if (e.which == 40){
-        $("#f a.current").next().click();
+        $("#f .item.current").next().click();
         e.preventDefault();
     } else if(e.which == 38){
-        $("#f a.current").prev().click();
+        $("#f .item.current").prev().click();
         e.preventDefault();
     } else if (e.which == 16) {
         e.preventDefault();
