@@ -43,7 +43,7 @@ var FavItem = function(item){
     if(item['type'] == 'uploads')
         this.byline = '<span style="font-size:12px">Uploaded by</span> <a target="_blank" href="' + item['uploaded_by']['url'] + '">' + item['uploaded_by']['name'] + '</a>'; 
     else if(item['type'] == 'favorites')
-        this.byline += '<span style="font-size:12px">Favorited by:</span> <a target="_blank" href="' + item['favorited_by']['url'] + '">' + item['favorited_by']['name'] + '</a>';
+        this.byline = '<span style="font-size:12px">Favorited by:</span> <a target="_blank" href="' + item['favorited_by']['url'] + '">' + item['favorited_by']['name'] + '</a>';
     this.thumb = item['thumb'];       
     this.element = this.makeElem();
 };
