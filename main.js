@@ -1,3 +1,32 @@
+
+// The following functions are used for getting and setting cookies.  
+function cookieSet(name, value, days) {
+    var expires;
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+}
+
+function cookieGet(name) {
+    var nameEQ = escape(name) + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return unescape(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function cookieDelete(name) {
+    createCookie(name, "", -1);
+}
+
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
@@ -57,6 +86,9 @@ FavItem.prototype.makeElem = function(item){
         .append("<br>" + this.byline)
         .click(function(e){
             var $this = $(this);
+            // Set the cookie so we can try to start
+            // where the user left off
+            cookieSet("lastwatched", this.id, 1);
             $("#f .item").removeClass("current");
             $this.addClass("current");
             $('html, body').animate({
@@ -116,6 +148,12 @@ $("html").keydown(function(e){
             scrollTop: $(".current").offset().top
         }, 500);
     }
+});
+
+// Try to play the video after the last one played if possible
+$(document).ready(function(){
+    var a = cookieGet("lastwatched");
+    $("div[data-id='" + a + "']").next().click();
 });
 
 
