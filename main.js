@@ -88,7 +88,7 @@ FavItem.prototype.makeElem = function(item){
             var $this = $(this);
             // Set the cookie so we can try to start
             // where the user left off
-            cookieSet("lastwatched", this.data("id"), 1);
+            cookieSet("lastwatched", $this.data("id"), 1);
             $("#f .item").removeClass("current");
             $this.addClass("current");
             $('html, body').animate({
