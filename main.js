@@ -122,7 +122,10 @@ function initPlaylist() {
             for(var i=0; i<count; i++) {
                 var favItem = new FavItem(data[i]);    
                 $('#f').append(favItem.element);
-                if ($(".current").length == 0){
+                var cookie = cookieGet("lastwatched");
+                if (cookie && favItem.id == cookie){
+                    favItem.click();   
+                } else if ($(".current").length == 0){
                     $("#f .item:first-of-type").click();
                 }                
             }
@@ -148,12 +151,6 @@ $("html").keydown(function(e){
             scrollTop: $(".current").offset().top
         }, 500);
     }
-});
-
-// Try to play the video after the last one played if possible
-$(document).ready(function(){
-    var a = cookieGet("lastwatched");
-    $("div[data-id='" + a + "']").next().click();
 });
 
 
