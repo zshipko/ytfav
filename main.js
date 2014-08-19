@@ -126,7 +126,7 @@ function initPlaylist() {
                 $('#f').append(favItem.element);
                 var cookie = cookieGet("lastwatched");
                 if (cookie && favItem.id == cookie){
-                    favItem.click();   
+                    favItem.element.click();   
                 } else if ($(".current").length == 0){
                     $("#f .item:first-of-type").click();
                 }                
