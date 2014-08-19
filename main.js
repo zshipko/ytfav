@@ -87,8 +87,10 @@ FavItem.prototype.makeElem = function(item){
         .click(function(e){
             var $this = $(this);
             // Set the cookie so we can try to start
-            // where the user left off
-            cookieSet("lastwatched", newLink.data("id"), 1);
+            // where the user left off, as long as it's not the first one
+            if (!newLink.is("#f .item:first-of-type")){
+                cookieSet("lastwatched", newLink.data("id"), 1);
+            }
             $("#f .item").removeClass("current");
             $this.addClass("current");
             $('html, body').animate({
