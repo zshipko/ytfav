@@ -124,14 +124,16 @@ function initPlaylist() {
             for(var i=0; i<count; i++) {
                 var favItem = new FavItem(data[i]);    
                 $('#f').append(favItem.element);
-                var cookie = cookieGet("lastwatched");
-                if (cookie && favItem.id == cookie){
-                    setTimeout(function(){
-                        favItem.element.click();
-                    }, 500);
-                } else if ($(".current").length == 0){
+                if ($(".current").length == 0){
                     $("#f .item:first-of-type").click();
                 }                
+            }
+            
+            var cookie = cookieGet("lastwatched");
+            if (cookie && $(".item[data-id='"+ cookie +"']").length > 0){
+                $(".item[data-id='"+ cookie +"']").click(); 
+            } else if (cookie){
+                cookieDelete("lastwatched");
             }
         }
     });
