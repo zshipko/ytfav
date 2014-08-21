@@ -129,11 +129,12 @@ function initPlaylist() {
                 }                
             }
             
-            var cookie = cookieGet("lastwatched");
-            if (cookie && $('.item[data-id="'+ cookie +'"]').length > 0){
-                $(".item[data-id='"+ cookie +"']").click(); 
+            var cookie = cookieGet("lastwatched"),
+                lastVid = $('.item [href="http://www.youtube.com/watch?v=' + cookie + '"]');
+            if (cookie && lastVid.length > 0){
+                lastVid.parent().click(); 
             } else if (cookie){
-                //cookieDelete("lastwatched");
+                cookieDelete("lastwatched");
             }
         }
     });
