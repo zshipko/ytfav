@@ -130,10 +130,10 @@ function initPlaylist() {
             }
             
             var cookie = cookieGet("lastwatched");
-            if (cookie && $(".item[data-id='"+ cookie +"']").length > 0){
+            if (cookie && $('.item[data-id="'+ cookie +'"]').length > 0){
                 $(".item[data-id='"+ cookie +"']").click(); 
             } else if (cookie){
-                cookieDelete("lastwatched");
+                //cookieDelete("lastwatched");
             }
         }
     });
