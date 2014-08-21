@@ -24,7 +24,7 @@ function cookieGet(name) {
 }
 
 function cookieDelete(name) {
-    createCookie(name, "", -1);
+    createSet(name, "", -1);
 }
 
 // 3. This function creates an <iframe> (and YouTube player)
